@@ -9,7 +9,7 @@ public class APITest001 {
                 given()
                         .baseUri("https://restful-booker.herokuapp.com")
                         .basePath("/booking/1")
-                .when()
+                .when().log().all()
                         .get()
                 .then().log().all()
                         .statusCode(200);
