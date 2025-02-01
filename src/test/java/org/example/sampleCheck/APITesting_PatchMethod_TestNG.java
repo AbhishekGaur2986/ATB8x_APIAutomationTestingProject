@@ -1,34 +1,29 @@
 package org.example.sampleCheck;
 
-import io.qameta.allure.Description;
 import static io.restassured.RestAssured.*;
 import io.restassured.http.ContentType;
 import org.testng.annotations.Test;
 
-public class APITesting_PostMethod_TestNG {
+public class APITesting_PatchMethod_TestNG {
 
-    @Description("My Second Test case Report")
     @Test
-    public void testPost(){
+    public void test_patch() {
 
         String payload = "{\n" +
-                "    \"name\": \"abhishek\",\n" +
+                "    \"name\": \"Gaur\",\n" +
                 "    \"job\": \"QA\"\n" +
                 "}";
 
-
                 given()
-                .header("content-type","application/json")
+                .header("content-type", "application/json")
                 .baseUri("https://reqres.in")
-                .basePath("/api/users")
+                .basePath("/api/users/226")
                 .contentType(ContentType.JSON)
                 .body(payload)
                 .when()
-                .post()
+                .patch()
                 .then()
-                .statusCode(201).log().all();
-
-
+                .statusCode(200).log().all();
 
     }
 }

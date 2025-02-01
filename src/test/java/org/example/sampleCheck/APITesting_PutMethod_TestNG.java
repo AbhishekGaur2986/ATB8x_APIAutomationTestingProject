@@ -1,7 +1,8 @@
 package org.example.sampleCheck;
 
 import io.qameta.allure.Description;
-import io.restassured.RestAssured;
+import static io.restassured.RestAssured.*;
+import io.restassured.http.ContentType;
 import org.testng.annotations.Test;
 
 public class APITesting_PutMethod_TestNG {
@@ -10,13 +11,17 @@ public class APITesting_PutMethod_TestNG {
     @Test
     public void testPut(){
 
-        String payload = "{\"name\":\"Abhishek\",\"job\":\"QA\"}";
+        String payload = "{\n" +
+                "    \"name\": \"Abhi\",\n" +
+                "    \"job\": \"Tester\"\n" +
+                "}";
 
-        RestAssured
-                .given()
+
+                given()
                 .header("content-type","application/json")
                 .baseUri("https://reqres.in")
-                .basePath("/api/users/2")
+                .basePath("/api/users/226")
+                .contentType(ContentType.JSON)
                 .body(payload)
                 .when()
                 .put()
